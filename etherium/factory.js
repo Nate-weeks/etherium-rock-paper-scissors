@@ -4,7 +4,7 @@ import RockPaperScissorsFactory from './build/RockPaperScissorsFactory.json'
 
 const instance = new web3.eth.Contract(
   JSON.parse(RockPaperScissorsFactory.interface),
-  '0xE6168ab7c83F3904a949ddD6bA3Aad0CF969C461'
+  '0x6f9Da511AFA84612D01fAdF71e7cd28fF0b96fC0'
 );
 
 export default instance;

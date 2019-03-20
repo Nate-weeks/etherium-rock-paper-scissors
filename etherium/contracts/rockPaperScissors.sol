@@ -2,9 +2,12 @@ pragma solidity ^0.4.17;
 
 contract RockPaperScissorsFactory {
     address[] public deployedRockPaperScissors;
+    RockPaperScissors gameContract;
 
-    function createRockPaperScissors(uint wager, string gameName, uint numberOfGames) public {
+    function createRockPaperScissors(uint wager, string gameName, uint numberOfGames) public payable{
         address newRockPaperScissors = new RockPaperScissors(wager, msg.sender, gameName, numberOfGames);
+        gameContract = RockPaperScissors(newRockPaperScissors);
+        gameContract.transfer(msg.value);
         deployedRockPaperScissors.push(newRockPaperScissors);
     }
 
@@ -26,6 +29,7 @@ contract RockPaperScissors {
         uint playerOneWinCount;
         uint playerTwoWinCount;
         address winner;
+        string result;
         bool completed;
     }
 
@@ -36,16 +40,11 @@ contract RockPaperScissors {
     uint bestOfX;
 
 
-     function RockPaperScissors(uint wager, address creator, string name, uint bestOf) public {
+     function RockPaperScissors(uint wager, address creator, string name, uint bestOf) public payable{
         manager = creator;
         gameWager = wager;
         gameName = name;
         bestOfX = bestOf;
-    }
-
-    function createGame() public payable{
-        require(msg.sender == manager);
-        require(msg.value == gameWager);
         Game memory newGame = Game({
             title: gameName,
             wager: gameWager,
@@ -57,13 +56,20 @@ contract RockPaperScissors {
             playerOneWinCount: 0,
             playerTwoWinCount: 0,
             winner: 0,
+            result: "no games have been played yet",
             completed: false
         });
         game = newGame;
     }
 
+    function () public payable {
+
+    }
+
     function joinGame() public payable{
         require(msg.value == gameWager);
+        require(msg.sender != game.playerOne);
+        require(msg.sender != game.playerTwo);
         game.playerTwo = msg.sender;
     }
 
@@ -91,24 +97,31 @@ contract RockPaperScissors {
         if(game.playerOneMove == game.playerTwoMove){
             game.playerOneMove = 0;
             game.playerTwoMove = 0;
+            game.result = "Player One and Player Two chose the same move, Tie!";
         }
         else if(game.playerOneMove == 1 && game.playerTwoMove == 2){
-            game.playerOneWinCount += 1;
+            game.playerTwoWinCount += 1;
+            game.result = "Player One chose Rock, Player Two chose Paper, Player Two Wins!";
         }
         else if(game.playerOneMove == 1 && game.playerTwoMove == 3){
-            game.playerTwoWinCount += 1;
+            game.playerOneWinCount += 1;
+            game.result = "Player One chose Rock, Player Two chose Scissors, Player One Wins!";
         }
         else if(game.playerOneMove == 2 && game.playerTwoMove == 1){
-            game.playerTwoWinCount += 1;
+            game.playerOneWinCount += 1;
+            game.result = "Player One chose Paper, Player Two chose Rock, Player One Wins!";
         }
         else if(game.playerOneMove == 2 && game.playerTwoMove == 3){
-            game.playerOneWinCount += 1;
+            game.playerTwoWinCount += 1;
+            game.result = "Player One chose Paper, Player Two chose Scissors, Player Two Wins!";
         }
         else if(game.playerOneMove == 3 && game.playerTwoMove == 2){
-            game.playerTwoWinCount += 1;
+            game.playerOneWinCount += 1;
+            game.result = "Player One chose Scissors, Player Two Chose Paper, Player One Wins!";
         }
         else if(game.playerOneMove == 3 && game.playerTwoMove == 1){
             game.playerTwoWinCount += 1;
+            game.result = "Player One Chose Scissors, Player Two chose Rock, Player Two Wins!";
         }
         if(game.playerOneWinCount == game.games / 2 + 1){
             game.winner = game.playerOne;
