@@ -16,7 +16,6 @@ class GameShow extends Component {
 
     const summary = await game.methods.game().call();
 
-    console.log(summary)
     return {
       address: props.query.address,
       title: summary[0],

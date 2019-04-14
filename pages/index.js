@@ -27,7 +27,6 @@ class RockPaperScissorsIndex extends Component {
 }
 
   render() {
-    console.log(this.props.games)
     return(
       <Layout>
         <div>
