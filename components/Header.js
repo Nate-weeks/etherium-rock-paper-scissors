@@ -1,3 +1,5 @@
+//Header.js - header file that includes links to the homepage and create-game page
+
 import React from 'react';
 import { Menu } from 'semantic-ui-react';
 import { Link } from '../routes';

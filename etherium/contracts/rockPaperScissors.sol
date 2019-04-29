@@ -1,16 +1,21 @@
+//rockPaperScissors.sol - RockPaperScissorsFactory contract and rockPaperScissors
+//contract - compiled and deployed to the blockchain in other scripts
+
+
 pragma solidity ^0.4.17;
 
 contract RockPaperScissorsFactory {
     address[] public deployedRockPaperScissors;
     RockPaperScissors gameContract;
-
+    // function to create and deploy a rockPaperScissors contract and add it's
+    // address to the array of addresses
     function createRockPaperScissors(uint wager, string gameName, uint numberOfGames) public payable{
         address newRockPaperScissors = new RockPaperScissors(wager, msg.sender, gameName, numberOfGames);
         gameContract = RockPaperScissors(newRockPaperScissors);
         gameContract.transfer(msg.value);
         deployedRockPaperScissors.push(newRockPaperScissors);
     }
-
+    // return the array of addresses of deployed rockPaperScissors contracts
     function getDeployedRockPaperScissors() public view returns(address[]) {
         return deployedRockPaperScissors;
     }
@@ -39,7 +44,7 @@ contract RockPaperScissors {
     Game public game;
     uint bestOfX;
 
-
+    // constructor - initiates a contract with some data
      function RockPaperScissors(uint wager, address creator, string name, uint bestOf) public payable{
         manager = creator;
         gameWager = wager;
@@ -61,18 +66,18 @@ contract RockPaperScissors {
         });
         game = newGame;
     }
-
+    // anonomous function that allows the contract to handle value sent
     function () public payable {
 
     }
-
+    // function that allows a user to send ether equal to the wager and join
     function joinGame() public payable{
         require(msg.value == gameWager);
         require(msg.sender != game.playerOne);
         require(msg.sender != game.playerTwo);
         game.playerTwo = msg.sender;
     }
-
+    // handle for player one move
     function playerOneMove(uint move) public{
         require(msg.sender == game.playerOne);
         require(move == 1 || move == 2 || move == 3);
@@ -82,7 +87,7 @@ contract RockPaperScissors {
             selectWinner();
         }
     }
-
+    // handle for player two move
     function playerTwoMove(uint move) public {
         require(msg.sender == game.playerTwo);
         require(move == 1 || move == 2 || move == 3);
@@ -92,7 +97,9 @@ contract RockPaperScissors {
             selectWinner();
         }
     }
-
+    // function called when both players have selected a move - handles for ties
+    // individual game winner and winner of the whole game then transfers value
+    // or resets moves as necessary
     function selectWinner() private {
         if(game.playerOneMove == game.playerTwoMove){
             game.playerOneMove = 0;

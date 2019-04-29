@@ -1,3 +1,5 @@
+//SelectMove.js - form that handles for the selection of a move in a radio-button menu
+
 import React, { Component } from 'react';
 import { Checkbox, Form, Input, Message, Button } from 'semantic-ui-react';
 import Game from '../etherium/game';
@@ -11,13 +13,16 @@ class SelectMove extends Component {
     loading: false,
     errorMessage:''
   }
+
+  // function handles for the click of radio buttons
   handleChange = (e, { value }) => this.setState({selected: value })
 
+  // handles for the submission of a move - re-renders the page after success or fail
   onSubmit = async (event) => {
     event.preventDefault();
     const game = Game(this.props.address)
     this.setState({ loading: true, errorMessage: '' })
-
+    // handle for player 1 move
     if(this.props.player == this.props.playerOne){
     try{
       await game.methods.playerOneMove(this.state.selected)
@@ -32,6 +37,7 @@ class SelectMove extends Component {
     }
       this.setState({ loading: false })
     } else {
+      // handle for player 2 move
       try{
         await game.methods.playerTwoMove(this.state.selected)
         .send({

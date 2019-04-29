@@ -1,3 +1,5 @@
+//new.js - form for creating a new game of rockPaperScissors
+
 import React, { Component } from 'react';
 import Layout from '../../components/Layout';
 import { Form, Button, Input, Message } from 'semantic-ui-react';
@@ -14,9 +16,10 @@ class GameNew extends Component {
   loading: false
 }
 
+// handles the submission of the new form, creates a new rockPaperScissors game
 onSubmit = async (event) => {
   event.preventDefault();
-  this.setState({ loading: true, errorMessage: '' })
+  this.setState({ loading: true, errorMessage: '' })  // loading ticker on
   try{
     const accounts = await web3.eth.getAccounts()
     await factory.methods.createRockPaperScissors(this.state.bet, this.state.name, this.state.bestOf)
@@ -27,10 +30,10 @@ onSubmit = async (event) => {
     Router.pushRoute('/')
   } catch (err) {
     this.setState({
-      errorMessage: err.message
+      errorMessage: err.message  // set the error message
     })
   }
-    this.setState({ loading: false })
+    this.setState({ loading: false })  // loading ticker off
 }
 
   render(){
@@ -81,11 +84,3 @@ onSubmit = async (event) => {
 }
 
 export default GameNew
-
-// TODO
-// - display relevant information about games
-// - create a join game button
-// - create a select move button that only appears if you are one of the
-// 2 players in the game
-// - display who won each round and how many games are left
-// - display who won the whole thing

@@ -1,3 +1,6 @@
+//game.js - establishes the interface for a specific game of rockPaperScissors given
+//a contract address
+
 import web3 from './web3'
 import Game from './build/RockPaperScissors.json'
 

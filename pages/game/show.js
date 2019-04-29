@@ -1,3 +1,7 @@
+//show.js - component that shows all the information and interractive pieces
+//available for a specific game of rockPaperScissors
+
+
 import React, {Component} from 'react';
 import Layout from '../../components/Layout';
 import Game from '../../etherium/game';
@@ -11,6 +15,7 @@ class GameShow extends Component {
   state = {
     player: ''
   }
+  // method to a list of information available for the rockPaperScissors game
   static async getInitialProps(props){
     const game = Game(props.query.address)
 
@@ -33,11 +38,13 @@ class GameShow extends Component {
     }
   }
 
+// get the currently logged-in player
   async componentDidMount() {
     const players = await web3.eth.getAccounts();
     this.setState({player: players[0]})
   }
 
+// destructure game info and display it in card components
   renderInfo(){
     const {
       playerOneMove,

@@ -1,3 +1,6 @@
+//Layout.js - layout component that wraps every other component - includes Header
+//and a stylesheet necessary for semantic-ui components
+
 import React from 'react';
 import Header from './Header';
 import { Container } from 'semantic-ui-react';

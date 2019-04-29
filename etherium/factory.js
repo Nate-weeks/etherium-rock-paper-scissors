@@ -1,3 +1,6 @@
+//factory.js - establishes the interface for a particle RockPaperScissorsFactory
+//given the address of a contract
+
 import web3 from './web3';
 
 import RockPaperScissorsFactory from './build/RockPaperScissorsFactory.json'

@@ -1,3 +1,6 @@
+//deploy.js - uses the HDWallerProvider and my ethereum account to deploy a
+//RockPaperScissorsFactory contract to the rinkeby network
+
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
 const compiledFactory = require('./build/RockPaperScissorsFactory.json')

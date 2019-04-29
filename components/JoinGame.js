@@ -1,3 +1,5 @@
+//JoinGame.js - button for joining a game of rockPaperScissors
+
 import React, { Component } from 'react';
 import { Form, Message, Button } from 'semantic-ui-react';
 import Game from '../etherium/game';
@@ -10,6 +12,7 @@ class JoinGame extends Component {
     loading: false
   };
 
+  // handles for submission of join-game function
   onClick = async event => {
     event. preventDefault();
 
@@ -18,10 +21,10 @@ class JoinGame extends Component {
     this.setState({ loading: true})
 
     try {
-      const accounts = await web3.eth.getAccounts();
+      const accounts = await web3.eth.getAccounts();  // get users account
       await game.methods.joinGame().send({
         from: accounts[0],
-        value: this.props.wager
+        value: this.props.wager                       // send value of wager in eth
       });
 
       Router.replaceRoute(`/game/${this.props.address}`)

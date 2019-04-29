@@ -1,3 +1,7 @@
+//compile.js - compiles rockPaperScissors.json and RockPaperScissorsFactory.json
+//from solidity - the json compilation objects include bytecode and an ABI for
+//web3 to interface with.
+
 const path = require('path');
 const solc = require('solc');
 const fs = require('fs-extra');

@@ -1,3 +1,8 @@
+//web3.js - handles for the establishing of an ethereum wallet to interract with
+//my app - uses their metamask log-in or fetches data with my infura account if
+//a local wallet is unavailable
+
+
 import Web3 from 'web3';
 
 let web3;
