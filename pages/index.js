@@ -21,7 +21,7 @@ class RockPaperScissorsIndex extends Component {
     return {
       header: address,
       description: (
-        <Link route={`game/${address}`}>
+        <Link route='game' params= {{address: `${address}`}}>
           <a>View Game</a>
         </Link>
     ),
