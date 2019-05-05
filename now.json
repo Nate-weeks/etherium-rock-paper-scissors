@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "name": "etherium-rock-paper-scissors",
+  "builds": [{ "src": "next.config.js", "use": "@now/next" }]
+}
