@@ -51,6 +51,7 @@ var _routes = require('../routes');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _jsxFileName = '/Users/Nate/etherium-rock-paper-scissors/pages/index.js?entry';
+//index.js - landing page for the app, displays a list of game addresses
 
 
 var RockPaperScissorsIndex = function (_Component) {
@@ -64,18 +65,20 @@ var RockPaperScissorsIndex = function (_Component) {
 
   (0, _createClass3.default)(RockPaperScissorsIndex, [{
     key: 'renderGames',
+
+    //function returns a list of game addresses and displays them as links
     value: function renderGames() {
       var items = this.props.games.map(function (address) {
         return {
           header: address,
           description: _react2.default.createElement(_routes.Link, { route: 'game/' + address, __source: {
               fileName: _jsxFileName,
-              lineNumber: 19
+              lineNumber: 24
             }
           }, _react2.default.createElement('a', {
             __source: {
               fileName: _jsxFileName,
-              lineNumber: 20
+              lineNumber: 25
             }
           }, 'View Game')),
           fluid: true
@@ -83,7 +86,7 @@ var RockPaperScissorsIndex = function (_Component) {
       });
       return _react2.default.createElement(_semanticUiReact.Card.Group, { items: items, __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 31
         }
       });
     }
@@ -93,26 +96,26 @@ var RockPaperScissorsIndex = function (_Component) {
       return _react2.default.createElement(_Layout2.default, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 31
+          lineNumber: 36
         }
       }, _react2.default.createElement('div', {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 32
+          lineNumber: 37
         }
       }, _react2.default.createElement('h3', {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 33
+          lineNumber: 38
         }
       }, 'Open Games'), _react2.default.createElement(_routes.Link, { route: '/game/new', __source: {
           fileName: _jsxFileName,
-          lineNumber: 34
+          lineNumber: 39
         }
       }, _react2.default.createElement('a', {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 40
         }
       }, _react2.default.createElement(_semanticUiReact.Button, {
         content: 'Create game',
@@ -120,12 +123,14 @@ var RockPaperScissorsIndex = function (_Component) {
         primary: true,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 41
         }
       }))), this.renderGames()));
     }
   }], [{
     key: 'getInitialProps',
+
+    // initial method to get the array of rockPaperScissors games
     value: function () {
       var _ref = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
         var games;
@@ -160,4 +165,4 @@ var RockPaperScissorsIndex = function (_Component) {
 }(_react.Component);
 
 exports.default = RockPaperScissorsIndex;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiQ29tcG9uZW50IiwiZmFjdG9yeSIsIkxheW91dCIsIkNhcmQiLCJCdXR0b24iLCJMaW5rIiwiUm9ja1BhcGVyU2Npc3NvcnNJbmRleCIsIml0ZW1zIiwicHJvcHMiLCJnYW1lcyIsIm1hcCIsImhlYWRlciIsImFkZHJlc3MiLCJkZXNjcmlwdGlvbiIsImZsdWlkIiwicmVuZGVyR2FtZXMiLCJtZXRob2RzIiwiZ2V0RGVwbG95ZWRSb2NrUGFwZXJTY2lzc29ycyIsImNhbGwiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxBQUFPLEFBQVM7Ozs7QUFDaEIsQUFBTyxBQUFhOzs7O0FBQ3BCLEFBQU8sQUFBWTs7OztBQUNuQixBQUFTLEFBQU07O0FBQ2YsQUFBUyxBQUFZOzs7Ozs7O0ksQUFFZjs7Ozs7Ozs7Ozs7a0NBT1MsQUFDYjtVQUFNLGFBQVEsQUFBSyxNQUFMLEFBQVcsTUFBWCxBQUFpQixJQUFJLG1CQUFXLEFBQzVDOztrQkFBTyxBQUNHLEFBQ1I7dUNBQ0UsQUFBQyw4QkFBSyxpQkFBTixBQUFxQjt3QkFBckI7MEJBQUEsQUFDRTtBQURGO1dBQUEsa0JBQ0UsY0FBQTs7d0JBQUE7MEJBQUE7QUFBQTtBQUFBLGFBSkMsQUFHSCxBQUNFLEFBR0o7aUJBUEYsQUFBTyxBQU9FLEFBRVY7QUFUUSxBQUNMO0FBRkosQUFBYyxBQVdkLE9BWGM7MkNBV1AsQUFBQyxzQkFBRCxBQUFNLFNBQU0sT0FBWixBQUFtQjtvQkFBbkI7c0JBQVAsQUFBTyxBQUNSO0FBRFE7T0FBQTs7Ozs2QkFHRSxBQUNQOzZCQUNFLEFBQUM7O29CQUFEO3NCQUFBLEFBQ0U7QUFERjtBQUFBLE9BQUEsa0JBQ0UsY0FBQTs7b0JBQUE7c0JBQUEsQUFDRTtBQURGO0FBQUEseUJBQ0UsY0FBQTs7b0JBQUE7c0JBQUE7QUFBQTtBQUFBLFNBREYsQUFDRSxBQUNBLCtCQUFBLEFBQUMsOEJBQUssT0FBTixBQUFZO29CQUFaO3NCQUFBLEFBQ0U7QUFERjt5QkFDRSxjQUFBOztvQkFBQTtzQkFBQSxBQUNFO0FBREY7QUFBQSx5QkFDRSxBQUFDO2lCQUFELEFBQ1UsQUFDVjtjQUZBLEFBRU8sQUFDUDtpQkFIQTs7b0JBQUE7c0JBSk4sQUFFRSxBQUNFLEFBQ0UsQUFPRDtBQVBDO0FBQ0EsaUJBUFYsQUFDRSxBQUNFLEFBV0ssQUFBSyxBQUlmOzs7Ozs7Ozs7Ozs7dUJBdENxQixrQkFBQSxBQUFRLFFBQVIsQUFBZ0IsK0IsQUFBaEIsQUFBK0M7O21CQUE3RDtBO2lEQUVDLEVBQUMsTyxBQUFEOzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBdUNYLEEsQUEzQ3FDOztrQkEyQ3JDLEFBQWUiLCJmaWxlIjoiaW5kZXguanM/ZW50cnkiLCJzb3VyY2VSb290IjoiL1VzZXJzL05hdGUvZXRoZXJpdW0tcm9jay1wYXBlci1zY2lzc29ycyJ9
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInBhZ2VzL2luZGV4LmpzIl0sIm5hbWVzIjpbIlJlYWN0IiwiQ29tcG9uZW50IiwiZmFjdG9yeSIsIkxheW91dCIsIkNhcmQiLCJCdXR0b24iLCJMaW5rIiwiUm9ja1BhcGVyU2Npc3NvcnNJbmRleCIsIml0ZW1zIiwicHJvcHMiLCJnYW1lcyIsIm1hcCIsImhlYWRlciIsImFkZHJlc3MiLCJkZXNjcmlwdGlvbiIsImZsdWlkIiwicmVuZGVyR2FtZXMiLCJtZXRob2RzIiwiZ2V0RGVwbG95ZWRSb2NrUGFwZXJTY2lzc29ycyIsImNhbGwiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFHQSxBQUFPLEFBQVM7Ozs7QUFDaEIsQUFBTyxBQUFhOzs7O0FBQ3BCLEFBQU8sQUFBWTs7OztBQUNuQixBQUFTLEFBQU07O0FBQ2YsQUFBUyxBQUFZOzs7OztBQVByQjs7O0ksQUFTTTs7Ozs7Ozs7OztTQVFOOzs7a0NBQ2UsQUFDYjtVQUFNLGFBQVEsQUFBSyxNQUFMLEFBQVcsTUFBWCxBQUFpQixJQUFJLG1CQUFXLEFBQzVDOztrQkFBTyxBQUNHLEFBQ1I7dUNBQ0UsQUFBQyw4QkFBSyxpQkFBTixBQUFxQjt3QkFBckI7MEJBQUEsQUFDRTtBQURGO1dBQUEsa0JBQ0UsY0FBQTs7d0JBQUE7MEJBQUE7QUFBQTtBQUFBLGFBSkMsQUFHSCxBQUNFLEFBR0o7aUJBUEYsQUFBTyxBQU9FLEFBRVY7QUFUUSxBQUNMO0FBRkosQUFBYyxBQVdkLE9BWGM7MkNBV1AsQUFBQyxzQkFBRCxBQUFNLFNBQU0sT0FBWixBQUFtQjtvQkFBbkI7c0JBQVAsQUFBTyxBQUNSO0FBRFE7T0FBQTs7Ozs2QkFHRSxBQUNQOzZCQUNFLEFBQUM7O29CQUFEO3NCQUFBLEFBQ0U7QUFERjtBQUFBLE9BQUEsa0JBQ0UsY0FBQTs7b0JBQUE7c0JBQUEsQUFDRTtBQURGO0FBQUEseUJBQ0UsY0FBQTs7b0JBQUE7c0JBQUE7QUFBQTtBQUFBLFNBREYsQUFDRSxBQUNBLCtCQUFBLEFBQUMsOEJBQUssT0FBTixBQUFZO29CQUFaO3NCQUFBLEFBQ0U7QUFERjt5QkFDRSxjQUFBOztvQkFBQTtzQkFBQSxBQUNFO0FBREY7QUFBQSx5QkFDRSxBQUFDO2lCQUFELEFBQ1UsQUFDVjtjQUZBLEFBRU8sQUFDUDtpQkFIQTs7b0JBQUE7c0JBSk4sQUFFRSxBQUNFLEFBQ0UsQUFPRDtBQVBDO0FBQ0EsaUJBUFYsQUFDRSxBQUNFLEFBV0ssQUFBSyxBQUlmOzs7U0F6Q0Q7Ozs7Ozs7Ozs7O3VCQUVzQixrQkFBQSxBQUFRLFFBQVIsQUFBZ0IsK0IsQUFBaEIsQUFBK0M7O21CQUE3RDtBO2lEQUVDLEVBQUMsTyxBQUFEOzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBd0NYLEEsQUE3Q3FDOztrQkE2Q3JDLEFBQWUiLCJmaWxlIjoiaW5kZXguanM/ZW50cnkiLCJzb3VyY2VSb290IjoiL1VzZXJzL05hdGUvZXRoZXJpdW0tcm9jay1wYXBlci1zY2lzc29ycyJ9
